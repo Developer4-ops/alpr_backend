@@ -36,14 +36,18 @@ env/
 *.swp
 *.swo
 
-# Logs
-logs/
+# Logs (keep directory structure via .gitkeep)
+logs/*.log
 *.log
 
-# Uploads (runtime data)
-uploads/
+# Uploads — runtime data (keep directory structure via .gitkeep)
+uploads/**/*
+!uploads/**/.gitkeep
 
-# Model weights (large binary files)
+# Model weights (large binary files — download separately)
+*.pt
+*.onnx
+*.engine
 weights/*.pt
 weights/*.onnx
 weights/*.engine
@@ -52,7 +56,21 @@ weights/*.engine
 .DS_Store
 Thumbs.db
 
-# Testing
+# Testing / CI cache
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Dev / benchmark artifacts
+phase*_results*.json
+video_test_results.json
+phase*_benchmark.py
+phase*_generate_images.py
+test_video_file.py
+
+# Test image directories
+batch_test_images/
+phase4_test_images/
+phase5_test_images/
+phase6_real_test_images/
+test_images/
